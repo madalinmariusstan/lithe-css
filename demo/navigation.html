@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+  <title>Lithe CSS navigation demo</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>
+    .demo-page{max-width:72rem;margin:auto;padding:var(--space-5)}
+    .demo-section{margin-block:var(--space-6)}
+    .tabs-layout{display:grid;grid-template-columns:12rem 1fr;gap:var(--space-4)}
+    @media(max-width:47.999rem){.demo-page{padding:var(--space-4)}.tabs-layout{grid-template-columns:1fr}.tabs.vertical{display:flex;overflow-x:auto;border-inline-end:0;border-bottom:1px solid var(--border)}.tabs.vertical .tab{border-inline-end:0;border-bottom:2px solid transparent}.tabs.vertical .tab[aria-selected="true"]{border-bottom-color:var(--primary)}}
+  </style>
+</head>
+<body>
+  <nav class="navbar sticky" aria-label="Primary navigation">
+    <a class="navbar-brand" href="#">Lithe</a>
+    <button class="button icon navbar-toggle" type="button" data-navbar-toggle="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+    <div class="navbar-menu" id="main-menu">
+      <div class="navbar-start">
+        <a class="navbar-link active" href="#">Dashboard</a>
+        <a class="navbar-link" href="#dropdowns">Dropdowns</a>
+        <a class="navbar-link" href="#tabs">Tabs</a>
+      </div>
+      <div class="navbar-end">
+        <div class="dropdown">
+          <button class="button" type="button" data-dropdown aria-haspopup="menu" aria-expanded="false">Account</button>
+          <div class="dropdown-menu end" role="menu">
+            <a class="dropdown-item" href="#" role="menuitem">Profile</a>
+            <button class="dropdown-item" type="button" role="menuitem">Settings</button>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item danger" type="button" role="menuitem">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="demo-page">
+    <div class="toolbar">
+      <button class="button mobile-only" type="button" data-sidebar="#mobile-sidebar" aria-controls="mobile-sidebar" aria-expanded="false">Open sidebar</button>
+      <span class="toolbar-spacer"></span>
+      <button class="button contrast" type="button" id="theme-toggle">Toggle theme</button>
+    </div>
+
+    <section class="demo-section" id="dropdowns">
+      <h1>Navigation stability</h1>
+      <p class="text-muted">Test keyboard navigation, mobile behavior, focus restoration and RTL-safe positioning.</p>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <h2>Start aligned</h2>
+            <div class="dropdown">
+              <button class="button primary" type="button" data-dropdown aria-haspopup="menu" aria-expanded="false">Actions</button>
+              <div class="dropdown-menu start" role="menu">
+                <button class="dropdown-item" type="button" role="menuitem">Edit</button>
+                <button class="dropdown-item" type="button" role="menuitem">Duplicate</button>
+                <button class="dropdown-item" type="button" role="menuitem" aria-disabled="true">Unavailable</button>
+                <div class="dropdown-divider"></div>
+                <button class="dropdown-item danger" type="button" role="menuitem">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card">
+            <h2>End aligned</h2>
+            <div class="dropdown">
+              <button class="button secondary" type="button" data-dropdown aria-haspopup="menu" aria-expanded="false">More</button>
+              <div class="dropdown-menu end" role="menu">
+                <a class="dropdown-item" href="#" role="menuitem">First link</a>
+                <a class="dropdown-item" href="#" role="menuitem">Second link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-section" id="tabs">
+      <h2>Horizontal tabs</h2>
+      <div>
+        <div class="tabs" role="tablist" aria-label="Horizontal example">
+          <button class="tab active" type="button" role="tab" data-tab="#overview" aria-selected="true">Overview</button>
+          <button class="tab" type="button" role="tab" data-tab="#activity" aria-selected="false" tabindex="-1">Activity</button>
+          <button class="tab" type="button" role="tab" data-tab="#settings" aria-selected="false" tabindex="-1">Settings</button>
+          <button class="tab" type="button" role="tab" aria-disabled="true" tabindex="-1">Disabled</button>
+        </div>
+        <section class="tab-panel" id="overview" role="tabpanel">Overview panel</section>
+        <section class="tab-panel" id="activity" role="tabpanel" hidden>Activity panel</section>
+        <section class="tab-panel" id="settings" role="tabpanel" hidden>Settings panel</section>
+      </div>
+
+      <h2>Vertical tabs</h2>
+      <div class="tabs-layout">
+        <div class="tabs vertical" role="tablist" aria-orientation="vertical" aria-label="Vertical example">
+          <button class="tab active" type="button" role="tab" data-tab="#general" aria-selected="true">General</button>
+          <button class="tab" type="button" role="tab" data-tab="#security" aria-selected="false" tabindex="-1">Security</button>
+          <button class="tab" type="button" role="tab" data-tab="#privacy" aria-selected="false" tabindex="-1">Privacy</button>
+        </div>
+        <div>
+          <section class="tab-panel" id="general" role="tabpanel">General settings</section>
+          <section class="tab-panel" id="security" role="tabpanel" hidden>Security settings</section>
+          <section class="tab-panel" id="privacy" role="tabpanel" hidden>Privacy settings</section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="sidebar offcanvas mobile" id="mobile-sidebar" aria-hidden="true" aria-label="Mobile sidebar">
+    <div class="toolbar">
+      <strong>Navigation</strong>
+      <span class="toolbar-spacer"></span>
+      <button class="button icon" type="button" data-sidebar="#mobile-sidebar" aria-label="Close sidebar">×</button>
+    </div>
+    <ul class="sidebar-menu">
+      <li><a class="sidebar-link active" href="#">Dashboard</a></li>
+      <li><a class="sidebar-link" href="#dropdowns">Dropdowns</a></li>
+      <li><a class="sidebar-link" href="#tabs">Tabs</a></li>
+    </ul>
+  </aside>
+  <button class="sidebar-backdrop" type="button" data-sidebar-backdrop="#mobile-sidebar" aria-label="Close sidebar"></button>
+
+  <script src="../dist/lithe.js"></script>
+  <script src="./navigation-demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+  <title>Lithe CSS Demo</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>
+    body { padding-block: 2rem; }
+    .demo-grid > * { margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <main class="container stack">
+    <header class="demo-masthead">
+      <div>
+        <a class="demo-wordmark" href="index.html" aria-label="Lithe CSS home"><img class="demo-logo" src="../assets/brand/lithecss-logo.svg" alt="Lithe CSS"></a>
+        <p class="demo-tagline">Flexible by design. Lightweight by default.</p>
+      </div>
+    </header>
+
+    <div class="alert success">Only elements using Lithe classes receive component styling.</div>
+
+    <div class="row demo-grid">
+      <section class="col-12 col-lg-7">
+        <div class="card">
+          <form class="form">
+            <div class="form-group">
+              <label class="label" for="title">Title</label>
+              <input class="input" id="title" placeholder="New post title">
+            </div>
+            <div class="form-group">
+              <label class="label" for="status">Status</label>
+              <select class="select" id="status">
+                <option>Draft</option>
+                <option>Published</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="content">Content</label>
+              <textarea class="textarea" id="content" placeholder="Tell your story..."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="button" type="button">Cancel</button>
+              <button class="button primary" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </section>
+      <aside class="col-12 col-lg-5">
+        <div class="card stack">
+          <h2 class="mt-0">Components</h2>
+          <div class="cluster">
+            <span class="badge success">Published</span>
+            <span class="badge warning">Draft</span>
+            <span class="badge danger">Error</span>
+          </div>
+          <button class="button danger">Delete</button>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

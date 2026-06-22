@@ -1,0 +1,176 @@
+.alert {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.alert.success { border-color: var(--success); }
+.alert.warning { border-color: var(--warning); }
+.alert.danger { border-color: var(--danger); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2em 0.55em;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.badge.success { border-color: var(--success); color: var(--success); }
+.badge.warning { border-color: var(--warning); color: var(--warning); }
+.badge.danger { border-color: var(--danger); color: var(--danger); }
+
+/* Toasts */
+.toast-region {
+  position: fixed;
+  z-index: var(--z-toast);
+  inset-block-end: max(var(--space-4), env(safe-area-inset-bottom));
+  inset-inline-end: max(var(--space-4), env(safe-area-inset-right));
+  display: grid;
+  width: min(24rem, calc(100vw - 2rem));
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+.toast {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  pointer-events: auto;
+}
+
+.toast.success { border-inline-start: 4px solid var(--success); }
+.toast.warning { border-inline-start: 4px solid var(--warning); }
+.toast.danger { border-inline-start: 4px solid var(--danger); }
+
+.toast-close {
+  position: relative;
+  display: inline-grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  align-self: start;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.toast-close::before,
+.toast-close::after {
+  position: absolute;
+  width: 0.875rem;
+  height: 1.5px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.toast-close::before { transform: rotate(45deg); }
+.toast-close::after { transform: rotate(-45deg); }
+.toast-close:hover { background: var(--surface-hover); color: var(--text); }
+.toast-close:focus-visible { outline: 0; box-shadow: var(--focus-ring); }
+
+/* Progress */
+.progress {
+  display: block;
+  width: 100%;
+  height: 0.45rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: var(--surface-hover);
+  color: var(--primary);
+  appearance: none;
+}
+
+.progress::-webkit-progress-bar { background: var(--surface-hover); }
+.progress::-webkit-progress-value { border-radius: 999px; background: currentColor; }
+.progress::-moz-progress-bar { border-radius: 999px; background: currentColor; }
+.progress.secondary { color: var(--secondary); }
+.progress.contrast { color: var(--contrast); }
+.progress.success { color: var(--success); }
+.progress.danger { color: var(--danger); }
+
+/* Loading spinner */
+.spinner {
+  display: inline-block;
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  border: 2px solid var(--border-strong);
+  border-inline-end-color: currentColor;
+  border-radius: 50%;
+  vertical-align: -0.125em;
+  transform: rotate(0deg) translateZ(0);
+  transform-origin: 50% 50%;
+  animation: lithe-spin 0.75s linear infinite;
+  -webkit-animation: lithe-spin 0.75s linear infinite;
+  will-change: transform;
+}
+
+@supports (color: color-mix(in srgb, black, white)) {
+  .spinner {
+    border-color: color-mix(in srgb, currentColor 26%, transparent);
+    border-inline-end-color: currentColor;
+  }
+}
+
+.spinner.sm {
+  inline-size: 0.875rem;
+  block-size: 0.875rem;
+  border-width: 1.5px;
+}
+
+.spinner.md {
+  inline-size: 1.125rem;
+  block-size: 1.125rem;
+  border-width: 2px;
+}
+
+.spinner.xl {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  border-width: 2.5px;
+}
+
+.spinner.xxl {
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-width: 3px;
+}
+
+@keyframes lithe-spin {
+  from { transform: rotate(0deg) translateZ(0); }
+  to { transform: rotate(360deg) translateZ(0); }
+}
+
+@-webkit-keyframes lithe-spin {
+  from { -webkit-transform: rotate(0deg) translateZ(0); }
+  to { -webkit-transform: rotate(360deg) translateZ(0); }
+}
+
+/* Loading is essential state feedback, so it remains animated but slower. */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.5s !important;
+    animation-iteration-count: infinite !important;
+    -webkit-animation-duration: 1.5s !important;
+    -webkit-animation-iteration-count: infinite !important;
+  }
+}

@@ -1,0 +1,30 @@
+name: Feature request
+description: Propose an improvement that fits Lithe's lightweight philosophy
+title: "[Feature]: "
+labels: [enhancement, needs-triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Describe the use case rather than only the requested API.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Framework principles
+      options:
+        - label: The proposal can remain class-based and non-invasive.
+        - label: The proposal can work in light and dark themes.
+        - label: The proposal does not require a mandatory JavaScript dependency.

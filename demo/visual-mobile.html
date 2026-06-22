@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+  <title>Lithe mobile viewport test</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <script src="../dist/lithe.js" defer></script>
+  <style>
+    body { padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); }
+    .edge-row { display:flex; justify-content:space-between; gap:1rem; }
+  </style>
+</head>
+<body>
+  <main class="container stack">
+    <h1>Mobile viewport</h1>
+    <p>Dropdowns must remain inside the visible viewport, including when the iOS keyboard or browser chrome changes its size.</p>
+    <div class="edge-row">
+      <div class="dropdown">
+        <button class="button" type="button" data-dropdown aria-expanded="false">Start</button>
+        <div class="dropdown-menu start">
+          <button class="dropdown-item" type="button">Light</button>
+          <button class="dropdown-item" type="button">Dark</button>
+          <button class="dropdown-item" type="button">System</button>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="button" type="button" data-dropdown aria-expanded="false">End</button>
+        <div class="dropdown-menu end">
+          <button class="dropdown-item" type="button">Profile settings</button>
+          <button class="dropdown-item" type="button">Sign out</button>
+        </div>
+      </div>
+    </div>
+    <label class="label" for="keyboard-test">iOS keyboard test</label>
+    <input class="input" id="keyboard-test" placeholder="Focus, then close the keyboard">
+  </main>
+</body>
+</html>

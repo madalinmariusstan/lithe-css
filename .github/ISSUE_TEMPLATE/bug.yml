@@ -1,0 +1,61 @@
+name: Bug report
+description: Report a reproducible problem in Lithe CSS
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Lithe CSS. Please include a minimal reproduction.
+  - type: input
+    id: version
+    attributes:
+      label: Lithe CSS version
+      placeholder: 0.0.1
+    validations:
+      required: true
+  - type: dropdown
+    id: bundle
+    attributes:
+      label: Bundle
+      options:
+        - Full
+        - Base
+        - Base + Extended
+        - JavaScript only
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Paste HTML/CSS/JS or link to a small repository.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, OS and device
+      placeholder: Safari 18, iOS 18, iPhone 15
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I tested the latest version.
+          required: true
+        - label: I searched existing issues.
+          required: true

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+  <title>Lithe CSS Admin Demo</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <link rel="stylesheet" href="assets/brand.css">
+</head>
+<body>
+  <div class="app">
+    <header class="navbar">
+      <div class="navbar-brand">
+        <button class="button ghost d-lg-none" type="button" data-sidebar="#admin-sidebar" aria-expanded="false">Menu</button>
+        Lithe Admin
+      </div>
+      <nav class="navbar-menu" aria-label="Primary">
+        <a class="navbar-link active" href="#">Posts</a>
+        <a class="navbar-link" href="#">Media</a>
+        <a class="navbar-link" href="#">Settings</a>
+      </nav>
+      <div class="navbar-actions">
+        <button class="button" type="button" data-drawer-open="#post-settings" aria-expanded="false">Settings</button>
+        <div class="dropdown">
+          <button class="button" type="button" data-dropdown aria-expanded="false">Account</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Profile</a>
+            <a class="dropdown-item" href="#">Preferences</a>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" type="button">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <aside class="sidebar" id="admin-sidebar">
+      <div class="sidebar-title">Content</div>
+      <ul class="sidebar-menu">
+        <li><a class="sidebar-link active" href="#">Posts</a></li>
+        <li><a class="sidebar-link" href="#">Pages</a></li>
+        <li><a class="sidebar-link" href="#">Categories</a></li>
+      </ul>
+      <div class="sidebar-title">System</div>
+      <ul class="sidebar-menu">
+        <li><a class="sidebar-link" href="#">Users</a></li>
+        <li><a class="sidebar-link" href="#">Extensions</a></li>
+      </ul>
+    </aside>
+
+    <main class="content stack">
+      <ol class="breadcrumb" aria-label="Breadcrumb">
+        <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Content</a></li>
+        <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Posts</a></li>
+        <li class="breadcrumb-item" aria-current="page">Edit</li>
+      </ol>
+
+      <div class="d-flex items-center justify-between gap-3 flex-wrap">
+        <div>
+          <h1 class="mt-0 mb-0">Edit post</h1>
+          <p class="text-muted mt-0">Admin components without global element styling.</p>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="button" type="button" data-dialog-open="#preview-dialog">Preview</button>
+          <button class="button primary" type="button">Save</button>
+        </div>
+      </div>
+
+      <div class="toolbar" aria-label="Formatting tools">
+        <div class="toolbar-group">
+          <span class="toolbar-label">Insert</span>
+          <button class="button sm ghost" type="button">Image</button>
+          <button class="button sm ghost" type="button">Link</button>
+        </div>
+        <div class="toolbar-group">
+          <button class="button sm ghost" type="button">Undo</button>
+          <button class="button sm ghost" type="button">Redo</button>
+        </div>
+        <span class="toolbar-spacer"></span>
+        <span class="toolbar-label">Draft saved</span>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Post sections">
+        <button class="tab active" type="button" role="tab" data-tab="#content-panel" aria-selected="true">Content</button>
+        <button class="tab" type="button" role="tab" data-tab="#media-panel" aria-selected="false" tabindex="-1">Media</button>
+        <button class="tab" type="button" role="tab" data-tab="#advanced-panel" aria-selected="false" tabindex="-1">Advanced</button>
+      </div>
+
+      <section class="tab-panel" id="content-panel" role="tabpanel">
+        <div class="row">
+          <div class="col-12 col-lg-8">
+            <div class="card">
+              <form class="form">
+                <div class="form-group">
+                  <label class="label" for="title">Title</label>
+                  <input class="input" id="title" value="A lightweight admin interface">
+                </div>
+                <div class="form-group">
+                  <label class="label" for="story">Content</label>
+                  <textarea class="textarea" id="story" placeholder="Tell your story..."></textarea>
+                  <span class="help">Only elements using Lithe classes receive component styling.</span>
+                </div>
+                <div class="form-group">
+                  <span class="label">Tags</span>
+                  <div class="tags">
+                    <span class="tag">release <button class="tag-remove" type="button" data-tag-remove aria-label="Remove release">×</button></span>
+                    <span class="tag">admin <button class="tag-remove" type="button" data-tag-remove aria-label="Remove admin">×</button></span>
+                    <span class="tag">css <button class="tag-remove" type="button" data-tag-remove aria-label="Remove css">×</button></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-12 col-lg-4">
+            <div class="card stack">
+              <label class="switch">
+                <input class="switch-input" type="checkbox" checked>
+                <span class="switch-control" aria-hidden="true"></span>
+                Allow comments
+              </label>
+              <div class="form-group invalid">
+                <label class="label" for="slug">Slug</label>
+                <input class="input" id="slug" value="duplicate-slug">
+                <span class="help">This slug already exists.</span>
+              </div>
+              <div class="accordion">
+                <details class="accordion-item" open>
+                  <summary class="accordion-summary">Publishing</summary>
+                  <div class="accordion-content">Status: Draft<br>Visibility: Public</div>
+                </details>
+                <details class="accordion-item">
+                  <summary class="accordion-summary">SEO</summary>
+                  <div class="accordion-content">Add a meta title and description.</div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="media-panel" role="tabpanel" hidden>
+        <label class="file-upload">
+          <input class="file-upload-input" type="file" multiple>
+          <span class="file-upload-title">Drop images here or choose files</span>
+          <span class="file-upload-help">PNG, JPG or WebP up to 5 MB</span>
+          <span class="file-upload-name" aria-live="polite"></span>
+        </label>
+      </section>
+
+      <section class="tab-panel" id="advanced-panel" role="tabpanel" hidden>
+        <div class="empty-state">
+          <h2 class="empty-state-title">No custom fields</h2>
+          <p class="empty-state-text">Create a custom field when the post needs structured metadata.</p>
+          <div class="empty-state-actions"><button class="button primary" type="button">Add custom field</button></div>
+        </div>
+      </section>
+
+      <nav class="pagination" aria-label="Pagination">
+        <a class="page-link disabled" aria-disabled="true" href="#">Previous</a>
+        <a class="page-link active" aria-current="page" href="#">1</a>
+        <a class="page-link" href="#">2</a>
+        <a class="page-link" href="#">Next</a>
+      </nav>
+    </main>
+  </div>
+
+  <dialog class="modal" id="preview-dialog">
+    <div class="modal-header">
+      <h2 class="modal-title">Post preview</h2>
+      <button class="modal-close" type="button" data-dialog-close aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">This is the native dialog component styled by Lithe.</div>
+    <div class="modal-footer">
+      <button class="button" type="button" data-dialog-close>Close</button>
+      <button class="button primary" type="button">Open preview</button>
+    </div>
+  </dialog>
+
+  <aside class="drawer" id="post-settings" aria-hidden="true" aria-labelledby="post-settings-title">
+    <div class="drawer-header">
+      <h2 class="modal-title" id="post-settings-title">Post settings</h2>
+      <button class="modal-close" type="button" data-drawer-close aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body stack">
+      <div class="form-group">
+        <label class="label" for="category">Category</label>
+        <select class="select" id="category"><option>News</option><option>Updates</option></select>
+      </div>
+      <label class="switch"><input class="switch-input" type="checkbox" checked><span class="switch-control"></span>Featured post</label>
+    </div>
+    <div class="drawer-footer">
+      <button class="button" type="button" data-drawer-close>Cancel</button>
+      <button class="button primary" type="button">Apply</button>
+    </div>
+  </aside>
+  <button class="drawer-backdrop" type="button" data-drawer-backdrop="#post-settings" aria-label="Close settings"></button>
+
+  <div class="toast-region" aria-live="polite">
+    <div class="toast success">
+      <div><strong>Saved</strong><br><span class="text-muted">The post was updated.</span></div>
+      <button class="toast-close" type="button" data-toast-close aria-label="Close">×</button>
+    </div>
+  </div>
+
+  <script src="../dist/lithe.js"></script>
+</body>
+</html>

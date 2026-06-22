@@ -1,0 +1,30 @@
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--background);
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  font-weight: 600;
+}
+
+.table.bordered th,
+.table.bordered td {
+  border: 1px solid var(--border);
+}
+
+.table.striped tbody tr:nth-child(even) {
+  background: var(--surface);
+}

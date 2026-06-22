@@ -1,0 +1,51 @@
+.demo-masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.25rem 1.5rem;
+}
+
+.demo-wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.demo-wordmark > span {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 300;
+}
+
+.demo-wordmark > strong {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.demo-tagline {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 36rem) {
+  .demo-masthead {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.demo-logo {
+  display: block;
+  inline-size: clamp(13rem, 32vw, 24rem);
+  block-size: auto;
+}
+
+[data-theme="dark"] .demo-logo {
+  filter: invert(1);
+}

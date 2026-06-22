@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lithe CSS forms matrix</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>
+    .demo { width:min(72rem, calc(100% - 2rem)); margin:2rem auto 5rem; }
+    .demo-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(14rem,1fr)); gap:1rem; }
+    .demo-row { padding:1rem 0; border-bottom:1px solid var(--border); }
+    .demo-title { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  </style>
+</head>
+<body>
+<main class="demo">
+  <header class="demo-title">
+    <div><h1>Forms and sizing</h1><p class="help">Component × size × state × theme.</p></div>
+    <select class="select sm" id="theme"><option value="light">Light</option><option value="dark">Dark</option></select>
+  </header>
+
+  <section class="demo-row"><h2>Inputs and selects</h2><div class="demo-grid">
+    <div><label class="label">Small</label><input class="input sm" placeholder="Small input"><select class="select sm"><option>Small select</option></select></div>
+    <div><label class="label">Medium</label><input class="input md" placeholder="Medium input"><select class="select md"><option>Medium select</option></select></div>
+    <div><label class="label">Extra large</label><input class="input xl" placeholder="XL input"><select class="select xl"><option>XL select</option></select></div>
+    <div><label class="label">XXL</label><input class="input xxl" placeholder="XXL input"><select class="select xxl"><option>XXL select</option></select></div>
+  </div></section>
+
+  <section class="demo-row"><h2>Textarea and file input</h2><div class="demo-grid">
+    <div><textarea class="textarea sm" rows="3" placeholder="Small textarea"></textarea><input class="file-input sm" type="file"></div>
+    <div><textarea class="textarea md" rows="3" placeholder="Medium textarea"></textarea><input class="file-input md" type="file"></div>
+    <div><textarea class="textarea xl" rows="3" placeholder="XL textarea"></textarea><input class="file-input xl" type="file"></div>
+    <div><textarea class="textarea xxl" rows="3" placeholder="XXL textarea"></textarea><input class="file-input xxl" type="file"></div>
+  </div></section>
+
+  <section class="demo-row"><h2>Buttons</h2><div class="form-row">
+    <button class="button primary sm">Small</button><button class="button secondary md">Medium</button><button class="button contrast xl">XL</button><button class="button danger xxl">XXL</button>
+    <button class="button outline primary md">Outline</button><button class="button ghost md">Ghost</button><button class="button link">Link</button>
+  </div></section>
+
+  <section class="demo-row"><h2>Validation</h2><div class="demo-grid">
+    <div class="form-group valid"><label class="label required">Valid</label><input class="input" value="Looks good"><span class="form-message">The value is valid.</span></div>
+    <div class="form-group invalid"><label class="label">Invalid</label><input class="input" value="Please fix"><span class="form-message">Please check this value.</span></div>
+    <div class="form-group warning"><label class="label">Warning</label><input class="input" value="Review"><span class="form-message">This value needs attention.</span></div>
+    <div><label class="label">Readonly</label><input class="input" readonly value="Readonly value"><span class="form-message">This value cannot be edited.</span></div>
+  </div></section>
+
+  <section class="demo-row"><h2>Checks, radios and switches</h2><div class="demo-grid">
+    <label class="check sm"><input class="check-input sm" type="checkbox" checked> Small checkbox</label>
+    <label class="check md"><input class="check-input md" type="checkbox" checked> Medium checkbox</label>
+    <label class="radio xl"><input class="radio-input xl" type="radio" checked> XL radio</label>
+    <label class="switch xxl"><input class="switch-input" type="checkbox" checked><span class="switch-control" aria-hidden="true"></span><span class="switch-label">XXL switch</span></label>
+  </div></section>
+
+  <section class="demo-row"><h2>Input groups</h2><div class="demo-grid">
+    <div class="input-group sm"><span class="input-addon">@</span><input class="input" placeholder="username"><button class="button primary">Go</button></div>
+    <div class="input-group md"><span class="input-addon">https://</span><input class="input" placeholder="example.com"></div>
+    <div class="input-group xl"><input class="input" placeholder="Search"><button class="button secondary">Search</button></div>
+    <div class="input-group xxl"><select class="select"><option>Category</option></select><button class="button contrast">Apply</button></div>
+  </div></section>
+</main>
+<script>document.querySelector('#theme').addEventListener('change',e=>document.documentElement.dataset.theme=e.target.value);</script>
+</body></html>

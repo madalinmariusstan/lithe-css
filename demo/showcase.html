@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <title>Lithe CSS — Showcase</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>
+    :root { --showcase-width: 55rem; }
+    html { scroll-behavior: smooth; }
+    body { font-size: 0.9375rem; }
+    a { color: var(--primary); }
+    h1, h2, h3, h4, h5, h6, p { margin-block: 0; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); line-height: 1.1; }
+    h2 { font-size: 1.35rem; }
+    h3 { font-size: 1.05rem; }
+    code, kbd { font-family: var(--font-mono); }
+    kbd { padding: .12rem .35rem; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: var(--radius-sm); background: var(--surface); }
+    mark { padding: .1rem .25rem; background: #fde68a; color: #4a3200; }
+    del { color: var(--danger); }
+    ins { color: var(--success); text-decoration: none; }
+    blockquote { margin: 0; padding-inline-start: 1rem; border-inline-start: 3px solid var(--border); color: var(--muted); }
+    .showcase { width: min(100% - 2rem, var(--showcase-width)); margin-inline: auto; padding-block: 2rem 4rem; }
+    .showcase-header { display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: 1rem; }
+    .showcase-section { padding-block: 1.75rem; border-top: 1px solid var(--border); }
+    .showcase-section:first-of-type { border-top: 0; }
+    .showcase-title { margin-bottom: .85rem; }
+    .showcase-note { color: var(--muted); font-size: .875rem; }
+    .showcase-image { display: block; width: 100%; border-radius: var(--radius); }
+    .showcase-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .showcase-inline-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .showcase-form-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .loading-line { height: 3rem; display: grid; place-items: center; border-radius: var(--radius); background: var(--surface); }
+    .theme-menu { min-width: 7.5rem; }
+    .typography-grid { display: grid; gap: 1rem 2rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mini-list { margin: 0; padding-inline-start: 1.25rem; }
+    .article-demo { padding: 1rem; }
+    .article-demo h2 { margin-bottom: .5rem; }
+    .article-demo footer { margin-top: 1rem; color: var(--muted); font-size: .85rem; }
+    .control-row { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .switch-line { display: flex; align-items: center; gap: .55rem; }
+    input[type="color"] { width: 100%; height: var(--control-height); padding: .25rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--input-background); }
+    @media (max-width: 46rem) {
+      .showcase-grid, .showcase-inline-grid, .showcase-form-grid, .typography-grid, .control-row { grid-template-columns: 1fr; }
+      .button.w-mobile { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="showcase stack" style="--stack-space: 2rem">
+    <header class="showcase-header">
+      <div class="stack" style="--stack-space: .3rem">
+        <h1>Lithe</h1>
+        <p class="showcase-note">A lightweight, class-based UI foundation without aggressive global styling.</p>
+      </div>
+      <div class="dropdown theme-menu">
+        <button class="button sm" type="button" data-dropdown aria-expanded="false">Theme ▾</button>
+        <div class="dropdown-menu" role="menu">
+          <button class="dropdown-item" type="button" data-theme-value="light">Light</button>
+          <button class="dropdown-item" type="button" data-theme-value="dark">Dark</button>
+          <button class="dropdown-item" type="button" data-theme-value="system">System</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="showcase-section stack">
+      <div class="showcase-title stack" style="--stack-space: .35rem">
+        <h2>Preview</h2>
+        <p class="showcase-note">A compact landing form built only from Lithe classes.</p>
+      </div>
+      <form class="form-row" style="gap: .5rem">
+        <input class="input" style="flex: 1 1 12rem" placeholder="First name" aria-label="First name">
+        <input class="input" style="flex: 1 1 12rem" type="email" placeholder="Email address" aria-label="Email address">
+        <button class="button primary" style="flex: 1 1 10rem" type="button">Subscribe</button>
+      </form>
+      <label class="check"><input class="check-input" type="checkbox"> I agree to the <a href="#">Privacy Policy</a></label>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Typography</h2>
+      <p>Aliquam lobortis vitae nibh nec rhoncus. Morbi mattis neque eget efficitur feugiat. Vivamus porta nunc a erat mattis.</p>
+      <blockquote>“A small framework should stay out of the way.”<br><small>— Lithe principle</small></blockquote>
+
+      <h3>Lists</h3>
+      <div class="showcase-grid">
+        <ul class="mini-list"><li>Simple defaults</li><li>Class-based controls</li><li>Accessible focus states</li></ul>
+        <ol class="mini-list"><li>Compose</li><li>Customize</li><li>Ship</li></ol>
+        <dl><dt>Lithe</dt><dd>A flexible, lightweight starting point.</dd></dl>
+      </div>
+
+      <h3>Inline text elements</h3>
+      <div class="typography-grid">
+        <a href="#">Primary link</a><a href="#" class="text-muted">Secondary link</a><u>Underlined</u>
+        <strong>Bold</strong><em>Italic</em><del>Deleted</del>
+        <ins>Inserted</ins><small>Small</small><code>Text sub</code>
+        <abbr title="Abbreviation">Abbr.</abbr><kbd>kbd</kbd><mark>Highlighted</mark>
+      </div>
+
+      <h3>Heading 3</h3>
+      <p>Integer bibendum malesuada libero vel eleifend. Fusce iaculis turpis ipsum, at efficitur sem scelerisque vel.</p>
+      <h4>Heading 4</h4>
+      <p>Cras fermentum velit vitae auctor aliquet. Donec ac fermentum felis.</p>
+      <h5>Heading 5</h5>
+      <p>Donec nec egestas nulla. Sed varius placerat felis eu suscipit.</p>
+      <h6>Heading 6</h6>
+      <p>Ut sed quam non mauris placerat consequat vitae id risus.</p>
+      <figure>
+        <img class="showcase-image" src="assets/landscape.svg" alt="Minimal mountain landscape">
+        <figcaption class="showcase-note">Local SVG illustration — no external dependency.</figcaption>
+      </figure>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Buttons</h2>
+      <div class="showcase-grid">
+        <button class="button primary w-mobile" type="button">Primary</button>
+        <button class="button secondary w-mobile" type="button">Secondary</button>
+        <button class="button contrast w-mobile" type="button">Contrast</button>
+        <button class="button primary outline w-mobile" type="button">Primary outline</button>
+        <button class="button secondary outline w-mobile" type="button">Secondary outline</button>
+        <button class="button contrast outline w-mobile" type="button">Contrast outline</button>
+      </div>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Form elements</h2>
+      <div class="form-group"><label class="label" for="search">Search</label><input class="input" id="search" type="search" placeholder="Search"></div>
+      <div class="form-group">
+        <span class="label">Control sizes</span>
+        <div class="showcase-form-grid">
+          <input class="input sm" type="text" placeholder="Small">
+          <input class="input md" type="text" placeholder="Medium">
+          <input class="input xl" type="text" placeholder="Extra large">
+          <input class="input xxl" type="text" placeholder="Double extra large">
+          <select class="select sm"><option>Small</option></select>
+          <select class="select md"><option>Medium</option></select>
+          <select class="select xl"><option>Extra large</option></select>
+          <select class="select xxl"><option>Double extra large</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label class="label" for="text">Text</label><input class="input" id="text" placeholder="Text"><span class="help">Clean by default, without a box shadow.</span></div>
+      <div class="form-group"><label class="label" for="select">Select</label><select class="select" id="select"><option>Select…</option><option>Draft</option><option>Published</option></select></div>
+      <div class="form-group"><label class="label" for="file">File browser</label><input class="file-input" id="file" type="file"></div>
+      <div class="form-group"><label class="label" for="range">Range slider</label><input class="range" id="range" type="range" value="50"></div>
+
+      <div class="showcase-form-grid">
+        <div class="form-group"><label class="label" for="valid">Valid</label><input class="input valid" id="valid" value="Valid"></div>
+        <div class="form-group"><label class="label" for="invalid">Invalid</label><input class="input invalid" id="invalid" value="Invalid"><span class="help error">Please check this value.</span></div>
+        <div class="form-group"><label class="label" for="disabled">Disabled</label><input class="input" id="disabled" value="Disabled" disabled></div>
+        <div class="form-group"><label class="label" for="date">Date</label><input class="input" id="date" type="date"></div>
+        <div class="form-group"><label class="label" for="time">Time</label><input class="input" id="time" type="time"></div>
+        <div class="form-group"><label class="label" for="color">Color</label><input id="color" type="color" value="#2563eb"></div>
+      </div>
+
+      <div class="control-row">
+        <div class="stack" style="--stack-space: .35rem"><strong>Checkboxes</strong><label class="check"><input class="check-input" type="checkbox" checked> Checkbox</label><label class="check"><input class="check-input" type="checkbox"> Checkbox</label></div>
+        <div class="stack" style="--stack-space: .35rem"><strong>Radio buttons</strong><label class="radio"><input class="radio-input" type="radio" name="radio" checked> Radio button</label><label class="radio"><input class="radio-input" type="radio" name="radio"> Radio button</label></div>
+        <div class="stack" style="--stack-space: .55rem"><strong>Switches</strong><label class="switch sm"><input class="switch-input" type="checkbox" checked><span class="switch-control" aria-hidden="true"></span><span class="switch-label">Small</span></label><label class="switch md"><input class="switch-input" type="checkbox"><span class="switch-control" aria-hidden="true"></span><span class="switch-label">Medium</span></label><label class="switch xl"><input class="switch-input" type="checkbox" checked><span class="switch-control" aria-hidden="true"></span><span class="switch-label">Extra large</span></label><label class="switch xxl"><input class="switch-input" type="checkbox"><span class="switch-control" aria-hidden="true"></span><span class="switch-label">Double extra large</span></label></div>
+      </div>
+      <button class="button secondary w-100" type="reset">Reset</button>
+      <button class="button primary w-100" type="button">Submit</button>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Tables</h2>
+      <div class="table-wrap">
+        <table class="table striped">
+          <thead><tr><th>#</th><th>Heading</th><th>Heading</th><th>Heading</th><th>Heading</th></tr></thead>
+          <tbody><tr><td>1</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr><tr><td>2</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr><tr><td>3</td><td>Cell</td><td>Cell</td><td>Cell</td><td>Cell</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Modal</h2>
+      <button class="button contrast" type="button" data-dialog-open="#showcase-modal">Launch demo modal</button>
+      <dialog class="modal" id="showcase-modal">
+        <header class="modal-header"><h2 class="modal-title">Lithe modal</h2><button class="modal-close" type="button" data-dialog-close aria-label="Close"></button></header>
+        <div class="modal-body stack"><p>This modal is centered on desktop and mobile.</p><input class="input" placeholder="Focus test"></div>
+        <footer class="modal-footer"><button class="button" type="button" data-dialog-close>Cancel</button><button class="button primary" type="button" data-dialog-close>Continue</button></footer>
+      </dialog>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Accordions</h2>
+      <div class="accordion">
+        <details class="accordion-item"><summary class="accordion-summary">Accordion 1</summary><div class="accordion-content">Compact, accessible and JavaScript-free.</div></details>
+        <details class="accordion-item" open><summary class="accordion-summary">Accordion 2</summary><div class="accordion-content"><ul class="mini-list"><li>Semantic details element</li><li>Keyboard accessible</li><li>Minimal styling</li></ul></div></details>
+      </div>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Article</h2>
+      <article class="card shadow-md article-demo">
+        <h2>Neutral by default</h2>
+        <p>Lithe does not add a shadow to every card. Elevation is opt-in through <code>.shadow-sm</code>, <code>.shadow-md</code> or <code>.shadow-lg</code>.</p>
+        <footer>Duis nec elit placerat, suscipit nibh quis, finibus neque.</footer>
+      </article>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Group</h2>
+      <div class="input-group"><input class="input" type="email" placeholder="Enter your email" aria-label="Email"><button class="button primary" type="button">Subscribe</button></div>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Progress bar</h2>
+      <progress class="progress" value="25" max="100">25%</progress>
+      <progress class="progress" value="55" max="100">55%</progress>
+    </section>
+
+    <section class="showcase-section stack">
+      <h2>Loading</h2>
+      <div class="loading-line"><span class="spinner" aria-label="Loading"></span></div>
+      <button class="button primary" type="button"><span class="spinner sm" aria-hidden="true"></span> Please wait…</button>
+    </section>
+
+    <footer class="showcase-section showcase-note">Built with Lithe CSS · <a href="../README.md">Source documentation</a></footer>
+  </main>
+
+  <script src="../dist/lithe.js"></script>
+  <script>
+    (function () {
+      const root = document.documentElement;
+      document.addEventListener('click', function (event) {
+        const item = event.target.closest('[data-theme-value]');
+        if (!item) return;
+        const value = item.getAttribute('data-theme-value');
+        if (value === 'system') root.removeAttribute('data-theme');
+        else root.setAttribute('data-theme', value);
+        localStorage.setItem('lithe-demo-theme', value);
+      });
+      const saved = localStorage.getItem('lithe-demo-theme');
+      if (saved && saved !== 'system') root.setAttribute('data-theme', saved);
+    }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17181b" media="(prefers-color-scheme: dark)">
+  <title>Lithe CSS stability test</title>
+  <link rel="stylesheet" href="../dist/lithe.css">
+  <link rel="stylesheet" href="assets/brand.css">
+  <style>.test-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}.test-section{padding:1rem;border:1px dashed var(--border);border-radius:var(--radius)}.foreign button{padding:2px}.foreign input{border:3px dotted magenta}</style>
+</head>
+<body>
+  <main class="container stack" style="padding-block:2rem">
+    <header><h1>Stability test</h1><p class="text-muted">Keyboard, responsive, dark mode and non-invasive selectors.</p></header>
+    <div class="cluster"><button class="button" id="theme">Toggle theme</button><button class="button primary" data-dialog-open="#test-modal">Open modal</button><button class="button" data-drawer-open="#test-drawer" aria-expanded="false">Open drawer</button></div>
+    <section class="test-grid">
+      <div class="test-section"><h2>Forms</h2><div class="form-group"><label class="label" for="name">Name</label><input class="input" id="name" placeholder="Your name"><small class="help">Helper text</small></div><div class="form-actions"><button class="button">Cancel</button><button class="button primary">Save</button></div></div>
+      <div class="test-section"><h2>Tabs</h2><div class="tabs" role="tablist"><button class="tab active" data-tab="#one" role="tab" aria-selected="true">One</button><button class="tab" data-tab="#two" role="tab" aria-selected="false" tabindex="-1">Two</button></div><div id="one" class="tab-panel">First panel</div><div id="two" class="tab-panel" hidden>Second panel</div></div>
+      <div class="test-section foreign"><h2>Unstyled foreign controls</h2><button>Native/foreign button</button><input placeholder="Foreign input"></div>
+    </section>
+  </main>
+  <dialog class="modal" id="test-modal"><header class="modal-header"><h2 class="modal-title">Modal</h2><button class="modal-close" data-dialog-close aria-label="Close">×</button></header><div class="modal-body"><p>Resize to mobile width and test keyboard focus.</p><input class="input" placeholder="Focusable field"></div><footer class="modal-footer"><button class="button" data-dialog-close>Close</button></footer></dialog>
+  <aside class="drawer" id="test-drawer" aria-hidden="true" aria-labelledby="drawer-title"><header class="drawer-header"><h2 id="drawer-title">Drawer</h2><button class="modal-close" data-drawer-close aria-label="Close">×</button></header><div class="drawer-body"><input class="input" placeholder="First focus"><button class="button">Second focus</button></div></aside><button class="drawer-backdrop" data-drawer-backdrop="#test-drawer" aria-label="Close drawer"></button>
+  <script src="../dist/lithe.js"></script><script>document.querySelector('#theme').addEventListener('click',()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'':'dark'});</script>
+</body>
+</html>

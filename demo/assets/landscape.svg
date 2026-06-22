@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title desc">
+  <title id="title">Minimal mountain landscape</title>
+  <desc id="desc">A pale blue sky above layered dark mountains.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dcecf4"/>
+      <stop offset="1" stop-color="#9fc1d0"/>
+    </linearGradient>
+    <linearGradient id="mountain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#64717b"/>
+      <stop offset="1" stop-color="#22272c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="560" fill="url(#sky)"/>
+  <circle cx="150" cy="110" r="44" fill="#fff" opacity=".3"/>
+  <path d="M0 420 180 270 320 390 520 150 720 380 890 210 1200 430V560H0Z" fill="#7f929c"/>
+  <path d="m400 250 120-100 84 132-42-27-42 13-42-12Z" fill="#f4f6f7" opacity=".92"/>
+  <path d="m800 300 90-90 92 130-48-26-39 12-50-15Z" fill="#f4f6f7" opacity=".9"/>
+  <path d="M0 470 210 350 360 445 555 250 740 455 915 320 1200 470V560H0Z" fill="url(#mountain)"/>
+  <path d="M0 500 170 420 350 500 590 360 790 505 980 410 1200 520V560H0Z" fill="#11161a" opacity=".82"/>
+</svg>

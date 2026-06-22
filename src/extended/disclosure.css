@@ -1,0 +1,97 @@
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tab:hover,
+.tab.active,
+.tab[aria-selected="true"] {
+  border-bottom-color: var(--primary);
+  color: var(--text);
+}
+
+.tab-panel {
+  padding-block: var(--space-4);
+}
+
+.tab-panel[hidden] {
+  display: none !important;
+}
+
+/* Accordion */
+.accordion {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+}
+
+.accordion-item + .accordion-item { border-top: 1px solid var(--border); }
+
+.accordion-summary {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+}
+
+.accordion-summary::-webkit-details-marker { display: none; }
+.accordion-summary::after { content: "+"; color: var(--muted); font-size: 1.25rem; }
+.accordion-item[open] > .accordion-summary::after { content: "−"; }
+.accordion-summary:focus-visible { outline: 2px solid var(--primary); outline-offset: -2px; }
+.accordion-content { padding: 0 var(--space-4) var(--space-4); color: var(--muted); }
+
+.tab:disabled,
+.tab[aria-disabled="true"] {
+  border-bottom-color: transparent;
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tabs.vertical {
+  display: grid;
+  align-content: start;
+  overflow: visible;
+  border-bottom: 0;
+  border-inline-end: 1px solid var(--border);
+}
+
+.tabs.vertical .tab {
+  justify-content: flex-start;
+  border-bottom: 0;
+  border-inline-end: 2px solid transparent;
+  text-align: start;
+}
+
+.tabs.vertical .tab:hover,
+.tabs.vertical .tab.active,
+.tabs.vertical .tab[aria-selected="true"] {
+  border-inline-end-color: var(--primary);
+}
+
+.tab {
+  touch-action: manipulation;
+}

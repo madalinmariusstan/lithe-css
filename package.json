@@ -1,0 +1,64 @@
+{
+  "name": "lithe-css",
+  "version": "0.0.1",
+  "description": "A lightweight, class-based, modular CSS framework.",
+  "scripts": {
+    "build:base": "postcss src/lithe-base.css -o dist/lithe-base.css && postcss src/lithe-base.css -o dist/lithe-base.min.css --env production",
+    "build:extended": "postcss src/lithe-extended.css -o dist/lithe-extended.css && postcss src/lithe-extended.css -o dist/lithe-extended.min.css --env production",
+    "build:full": "postcss src/lithe.css -o dist/lithe.css && postcss src/lithe.css -o dist/lithe.min.css --env production",
+    "build": "npm run build:base && npm run build:extended && npm run build:full && node -e \"require('node:fs').copyFileSync('src/js/lithe.js', 'dist/lithe.js')\"",
+    "watch": "postcss src/lithe.css -o dist/lithe.css --watch",
+    "check": "node scripts/check.mjs && npm run api:check && npm run baseline:check",
+    "test": "npm run build && npm run check",
+    "baseline:check": "node scripts/baseline-check.mjs",
+    "baseline:targets": "browserslist",
+    "api:check": "node scripts/api-check.mjs",
+    "js:check": "node --check src/js/lithe.js && node --check dist/lithe.js",
+    "pack:check": "npm pack --dry-run",
+    "release:check": "npm test && npm run pack:check"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.5.0",
+    "browserslist-config-baseline": "^0.5.0",
+    "cssnano": "^8.0.2",
+    "postcss": "^8.5.15",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
+  },
+  "license": "MIT",
+  "style": "dist/lithe.min.css",
+  "main": "dist/lithe.js",
+  "keywords": [
+    "css",
+    "framework",
+    "ui",
+    "lightweight",
+    "class-based",
+    "modular",
+    "responsive"
+  ],
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "docs/public-api.json"
+  ],
+  "browserslist": [
+    "extends browserslist-config-baseline"
+  ],
+  "exports": {
+    ".": {
+      "style": "./dist/lithe.min.css",
+      "default": "./dist/lithe.js"
+    },
+    "./base": "./dist/lithe-base.min.css",
+    "./extended": "./dist/lithe-extended.min.css",
+    "./css": "./dist/lithe.min.css",
+    "./js": "./dist/lithe.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

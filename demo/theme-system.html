@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lithe CSS theme system</title>
+  <link rel="stylesheet" href="../dist/lithe.min.css">
+  <style>
+    body{margin:0;background:var(--background);color:var(--text);font-family:var(--font-sans)}
+    main{width:min(56rem,calc(100% - 2rem));margin:3rem auto}.preview{display:grid;gap:1rem;padding:1.5rem;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface-raised)}
+    .swatches{display:flex;flex-wrap:wrap;gap:.75rem}.swatch{width:4rem;height:4rem;border-radius:var(--radius);border:1px solid var(--border)}
+  </style>
+</head>
+<body>
+<main>
+  <div class="toolbar">
+    <strong>Lithe CSS theme system</strong><span class="toolbar-spacer"></span>
+    <select class="select" id="theme" aria-label="Theme" style="width:auto">
+      <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+    </select>
+    <input class="input" id="brand" type="color" value="#2563eb" aria-label="Primary color" style="width:3rem;padding:.2rem">
+  </div>
+  <section class="preview">
+    <div class="swatches"><span class="swatch" style="background:var(--primary)"></span><span class="swatch" style="background:var(--primary-soft)"></span><span class="swatch" style="background:var(--surface)"></span></div>
+    <div class="cluster"><button class="button primary">Primary</button><button class="button outline primary">Outline</button><button class="button danger">Danger</button></div>
+    <input class="input" placeholder="Focus me">
+    <label class="switch"><input class="switch-input" type="checkbox" checked><span class="switch-control" aria-hidden="true"></span><span>Switch follows primary</span></label>
+    <progress class="progress" value="65" max="100">65%</progress>
+  </section>
+</main>
+<script>
+const root=document.documentElement, theme=document.querySelector('#theme'), brand=document.querySelector('#brand');
+theme.addEventListener('change',()=>{theme.value==='system'?root.removeAttribute('data-theme'):root.dataset.theme=theme.value});
+brand.addEventListener('input',()=>{root.style.setProperty('--primary',brand.value);root.style.setProperty('--primary-hover',brand.value);root.style.setProperty('--primary-active',brand.value);root.style.setProperty('--switch-on',brand.value)});
+</script>
+</body></html>

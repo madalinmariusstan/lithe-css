@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  min-height: -webkit-fill-available;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  text-size-adjust: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Keep the page canvas themed during iOS overscroll and browser chrome transitions. */
+html,
+body {
+  background-color: var(--background);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Reduce decorative motion, but keep essential status indicators alive. */
+  *:not(.spinner),
+  *:not(.spinner)::before,
+  *:not(.spinner)::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.media-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Stable scroll lock for iOS off-canvas panels. */
+body.page-locked {
+  position: fixed;
+  inset-inline: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Mobile interaction defaults for opt-in Lithe controls. */
+.button,
+.input,
+.select,
+.textarea,
+.file-input,
+.check-input,
+.radio-input,
+.switch-control,
+.range {
+  touch-action: manipulation;
+}
